@@ -1,0 +1,35 @@
+Chce zrobic zestawienie oprocentowania stalego z kilku bankow, na podstawie dołączonego HTML'a pomóż mi zebrać takie dane:
+{
+    "bank": "Example Bank",
+    "offer_name": "MegaOffer",
+    "fixed_interest_rate": 5.925,    
+    "apr": 7.14,
+    "offer_collection_date": DZISIEJSZA DATA
+}
+  
+Zrób to w formacie JSON, aby można było łatwo przetworzyć te dane. Upewnij się, że wszystkie wartości są poprawnie sformatowane i nie zawierają zbędnych spacji ani znaków specjalnych.
+W przypadku gdy jest kilka ofert  zbuudj liste słownikow w formacie JSON. Jeśli nie m ainfomracji o RRSO to wpisz 0.
+Moja strktura plikow na dysku wyglada tak:
+
+```
+ls -R
+.:
+alior  bnpparibas  ing  mbank  pekaobh  pkobp   santander 
+
+./alior:
+
+./bnpparibas:
+bnpparibas_2025-04-25.json
+
+./ing:
+ing_2025-04-25.json
+
+./mbank:
+./pekaobh:
+./pkobp:
+./santander
+```
+Napisz jednoliniową komendę bash, który po wklejeniu w terminal stworzy plik w odpowienim katalogu z nazwa <nazwa banku>_<data>.json z tym JSONem np.
+```
+echo '{"bank": "Alior", "offer_name": "Oferta", "fixed_interest_rate": 6.355, "apr": 7.89, "offer_collection_date": "'$(date +"%Y-%m-%d")'"}' > alior/alior_$(date +"%Y-%m-%d").json
+```
