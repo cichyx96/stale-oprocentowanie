@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 import os
 import pathlib
 
@@ -120,6 +122,37 @@ plt.tight_layout()
 plt.savefig(img_output_dir / "output_fixed_rate_over_time_by_bank.png")
 plt.show()
 
+# Ensure offer_collection_date is in datetime format
+df["offer_collection_date"] = pd.to_datetime(df["offer_collection_date"])
+
+# Filter df for rows with valid fixed_interest_rate
+df_fixed_full = df[df["fixed_interest_rate"].notna()]
+df_fixed_full = df_fixed_full.sort_values(["bank", "offer_collection_date"])
+
+# Filter for the last 3 months
+three_months_ago = datetime.now() - timedelta(days=90)
+df_fixed_last_3_months = df_fixed_full[df_fixed_full["offer_collection_date"] >= three_months_ago]
+
+# Plot for the last 3 months
+plt.figure(figsize=(12, 6))
+
+for bank, group in df_fixed_last_3_months.groupby("bank"):
+    plt.plot(
+        group["offer_collection_date"],
+        group["fixed_interest_rate"],
+        marker="o",
+        label=bank
+    )
+
+plt.xlabel("Date")
+plt.ylabel("Fixed Interest Rate (%)")
+plt.title("Fixed Interest Rates Over Last 3 Months by Bank")
+plt.xticks(rotation=45, ha="right")
+plt.legend(title="Bank", bbox_to_anchor=(1.05, 1), loc="upper left")
+plt.tight_layout()
+plt.savefig(img_output_dir / "output_fixed_rate_last_3_months_by_bank.png")
+plt.show()
+
 
 # Filter df for rows with valid apr
 df_apr_full = df[(df["apr"] > 0) & (df["offer_collection_date"].notna())]
@@ -144,3 +177,34 @@ plt.legend(title="Bank", bbox_to_anchor=(1.05, 1), loc="upper left")
 plt.tight_layout()
 plt.savefig(img_output_dir / "output_apr_over_time_by_bank.png")
 plt.show()
+
+
+# Filter df for rows with valid apr
+df_apr_full = df[(df["apr"] > 0) & (df["offer_collection_date"].notna())]
+df_apr_full["offer_collection_date"] = pd.to_datetime(df_apr_full["offer_collection_date"])
+df_apr_full = df_apr_full.sort_values(["bank", "offer_collection_date"])
+
+# Filter for the last 3 months
+three_months_ago = datetime.now() - timedelta(days=90)
+df_last_3_months = df_apr_full[df_apr_full["offer_collection_date"] >= three_months_ago]
+
+# Plot for the last 3 months
+plt.figure(figsize=(12, 6))
+
+for bank, group in df_last_3_months.groupby("bank"):
+    plt.plot(
+        group["offer_collection_date"],
+        group["apr"],
+        marker="o",
+        label=bank
+    )
+
+plt.xlabel("Date")
+plt.ylabel("APR (%)")
+plt.title("APR Over Last 3 Months by Bank")
+plt.xticks(rotation=45, ha="right")
+plt.legend(title="Bank", bbox_to_anchor=(1.05, 1), loc="upper left")
+plt.tight_layout()
+plt.savefig(img_output_dir / "output_apr_last_3_months_by_bank.png")
+plt.show()
+
