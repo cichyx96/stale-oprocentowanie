@@ -12,11 +12,11 @@ Aktualnie zbieram dane z poniższych banków:
 - [PKO BP](https://www.pkobp.pl/klient-indywidualny/kredyty-pozyczki/kredyt-lub-pozyczka-ze-stala-stopa-procentowa-przez-5-lat)
 - [ING](https://www.ing.pl/indywidualni/kredyty-i-pozyczki/kredyt-hipoteczny/oferty-i-oprocentowanie-stale)
 - [BNP Paribas](https://www.bnpparibas.pl/klienci-indywidualni/kredyty/kredyt-hipoteczny-z-niska-marza/stale-oprocentowanie)
-- [Alior Bank](https://www.aliorbank.pl/klienci-indywidualni/kredyty-hipoteczne/kredyt-z-okresowo-stala-stopa-oprocentowania.html)
 - [Mbank](https://www.mbank.pl/indywidualny/kredyty/kredyty-hipoteczne/chce-kredyt-hipoteczny/) 
 - [Santander](https://www.santander.pl/klient-indywidualny/kredyty/kredyt-mieszkaniowy#kredytmieszkaniowy=2) 
 - [Pekao Bank Hipoteczny](https://www.pekaobh.pl/strefa-klienta-main/Oprocentowanie#section-2) 
-
+- [Alior Bank](https://www.aliorbank.pl/klienci-indywidualni/kredyty-hipoteczne/kredyt-z-okresowo-stala-stopa-oprocentowania.html)
+- [VeloBank](https://www.velobank.pl/klienci-indywidualni/kredyty/kredyt-hipoteczny.html)
 
 Wykresy
 
