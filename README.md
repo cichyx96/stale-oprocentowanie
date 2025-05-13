@@ -18,11 +18,11 @@ Aktualnie zbieram dane z poniższych banków:
 - [VeloBank](https://www.velobank.pl/klienci-indywidualni/kredyty/kredyt-hipoteczny.html)
 
 ## Wykresy
-### Wysokość stałego oprocentowania w ostatnich 3 miesiącach.
+### Wysokość stałego oprocentowania w ostatnim miesiącu.
 ![Stale oprocentowanie 3 miesiace](img/output_fixed_rate_last_3_months_by_bank.png)
 ### Wysokość stałego oprocentowania w ostatniej ofercie.
 ![Stale oprocentowanie ostatnia oferta](img/output_fixed_rate_plot.png)
-### RRSO w ostatnich 3 miesiącach.
+### RRSO w ostatnim miesiącu.
 ![RRSO 3 miesiace](img/output_apr_last_3_months_by_bank.png)
 ### RRSO w ostatniej ofercie.
 ![RRSO ostatnia oferta](img/output_apr_plot.png)
