@@ -53,8 +53,8 @@ for bar in bars:
     )
 
 plt.xlabel("Bank")
-plt.ylabel("Fixed Interest Rate (%)")
-plt.title("Best (Lowest) Fixed Interest Rates by Bank")
+plt.ylabel("Oprocentowanie (%)")
+plt.title("Porównanie oprocentowania stałego ostatnich zebranych ofert")
 plt.xticks(rotation=45, ha="right")
 plt.tight_layout()
 plt.savefig(img_output_dir / "output_fixed_rate_plot.png")
@@ -87,8 +87,8 @@ for bar in bars:
     )
 
 plt.xlabel("Bank")
-plt.ylabel("APR (%)")
-plt.title("Best (Lowest) APR by Bank")
+plt.ylabel("RRSO (%)")
+plt.title("Porównanie RRSO ostatnich zebranych ofert")
 plt.xticks(rotation=45, ha="right")
 plt.tight_layout()
 plt.savefig(img_output_dir / "output_apr_plot.png")
@@ -114,8 +114,8 @@ for bank, group in df_fixed_full.groupby("bank"):
     )
 
 plt.xlabel("Date")
-plt.ylabel("Fixed Interest Rate (%)")
-plt.title("Fixed Interest Rates Over Time by Bank")
+plt.ylabel("Oprocentowanie (%)")
+plt.title("Oprocentowanie stałe w czasie")
 plt.xticks(rotation=45, ha="right")
 plt.legend(title="Bank", bbox_to_anchor=(1.05, 1), loc="upper left")
 plt.tight_layout()
@@ -129,11 +129,12 @@ df["offer_collection_date"] = pd.to_datetime(df["offer_collection_date"])
 df_fixed_full = df[df["fixed_interest_rate"].notna()]
 df_fixed_full = df_fixed_full.sort_values(["bank", "offer_collection_date"])
 
-# Filter for the last 3 months
-three_months_ago = datetime.now() - timedelta(days=90)
+# Filter for the last X months
+last_days = 30
+three_months_ago = datetime.now() - timedelta(days=last_days)
 df_fixed_last_3_months = df_fixed_full[df_fixed_full["offer_collection_date"] >= three_months_ago]
 
-# Plot for the last 3 months
+# Plot for the last X months
 plt.figure(figsize=(12, 6))
 
 for bank, group in df_fixed_last_3_months.groupby("bank"):
@@ -145,12 +146,12 @@ for bank, group in df_fixed_last_3_months.groupby("bank"):
     )
 
 plt.xlabel("Date")
-plt.ylabel("Fixed Interest Rate (%)")
-plt.title("Fixed Interest Rates Over Last 3 Months by Bank")
+plt.ylabel("Oprocentowanie (%)")
+plt.title("Oprocetowanie stałe przez ostatni miesiąc")
 plt.xticks(rotation=45, ha="right")
 plt.legend(title="Bank", bbox_to_anchor=(1.05, 1), loc="upper left")
 plt.tight_layout()
-plt.savefig(img_output_dir / "output_fixed_rate_last_3_months_by_bank.png")
+plt.savefig(img_output_dir / "output_fixed_rate_last_months_by_bank.png")
 plt.show()
 
 
@@ -170,8 +171,8 @@ for bank, group in df_apr_full.groupby("bank"):
     )
 
 plt.xlabel("Date")
-plt.ylabel("APR (%)")
-plt.title("APR Over Time by Bank")
+plt.ylabel("RRSO (%)")
+plt.title("RRSO w czasie")
 plt.xticks(rotation=45, ha="right")
 plt.legend(title="Bank", bbox_to_anchor=(1.05, 1), loc="upper left")
 plt.tight_layout()
@@ -184,11 +185,12 @@ df_apr_full = df[(df["apr"] > 0) & (df["offer_collection_date"].notna())]
 df_apr_full["offer_collection_date"] = pd.to_datetime(df_apr_full["offer_collection_date"])
 df_apr_full = df_apr_full.sort_values(["bank", "offer_collection_date"])
 
-# Filter for the last 3 months
-three_months_ago = datetime.now() - timedelta(days=90)
+# Filter for the last x months
+last_days = 30
+three_months_ago = datetime.now() - timedelta(days=last_days)
 df_last_3_months = df_apr_full[df_apr_full["offer_collection_date"] >= three_months_ago]
 
-# Plot for the last 3 months
+# Plot for the last X months
 plt.figure(figsize=(12, 6))
 
 for bank, group in df_last_3_months.groupby("bank"):
@@ -200,11 +202,11 @@ for bank, group in df_last_3_months.groupby("bank"):
     )
 
 plt.xlabel("Date")
-plt.ylabel("APR (%)")
-plt.title("APR Over Last 3 Months by Bank")
+plt.ylabel("RRSO (%)")
+plt.title("RRSO przez ostatni miesiac")
 plt.xticks(rotation=45, ha="right")
 plt.legend(title="Bank", bbox_to_anchor=(1.05, 1), loc="upper left")
 plt.tight_layout()
-plt.savefig(img_output_dir / "output_apr_last_3_months_by_bank.png")
+plt.savefig(img_output_dir / "output_apr_last_months_by_bank.png")
 plt.show()
 
