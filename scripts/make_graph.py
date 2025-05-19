@@ -61,7 +61,7 @@ plt.savefig(img_output_dir / "output_fixed_rate_plot.png")
 plt.show()
 
 # Step 8: Filter out rows where APR is 0 and take the best (lowest) APR for each bank
-df_apr = df[df["apr"] > 0]  # Exclude rows where APR is 0
+df_apr = df_fixed[df_fixed["apr"] > 0]  # Exclude rows where APR is 0
 df_apr = df_apr.loc[df_apr.groupby("bank")["apr"].idxmin()]
 
 # Step 9: Sort the DataFrame by APR
