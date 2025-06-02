@@ -1,0 +1,10 @@
+[
+    {
+        "bank": "velobank",
+        "offer_name": "Velobank offer",
+        "fixed_interest_rate": 6.34,
+        "apr": 7.43,
+        "offer_collection_date": "2025-06-02",
+        "date": "2025-06-02"
+    }
+]
